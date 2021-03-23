@@ -1,12 +1,23 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
-
+import FriendsList from './components/FriendsList';
 import Login from './components/Login';
+import PrivateRoute from './components/PrivateRoute';
+
+import { axiosWithAuth } from './utils/axiosWithAuth';
 
 function App() {
   const logout = () => {
-
+    axiosWithAuth()
+      .post('/api/logout')
+      .then(res => {
+        localStorage.removeItem('token');
+        window.location.href = '/login';
+      })
+      .catch(err => {
+        console.log(err.response);
+      })
   }
   return (
   <Router>
@@ -16,14 +27,14 @@ function App() {
           <Link to="/login">Login</Link>
         </li>
         <li>
-          <Link to="/">a</Link>
+          <Link onClick={logout}>Logout</Link>
         </li>
         <li>
-          {localStorage.getItem('token') &&<Link to="/protected">Protected Page</Link>}
+          {localStorage.getItem('token') &&<Link to="/FriendsList">Friends List</Link>}
         </li>
       </ul>
       <Switch>
-        {/* <Route exact path="/protected" component={ahhhh} /> */}
+        <PrivateRoute exact path="/FriendsList" component={FriendsList} />
         <Route path="/login" component={Login} />
         <Route component={Login} />
       </Switch>
