@@ -44,14 +44,9 @@ class FriendsList extends React.Component {
         const friendsList = this.formatData();
         return (
             <div className="friends-list">
-                <div className="title-wrapper">
-                    <div className="title">
-                        <div></div>
-                    </div>
-                </div>
                 {friendsList.length > 0 && (
                     <div className="friends-wrapper">
-                        <div>
+                        <h3>Friends List</h3>
                             {friendsList.map(friend => (
                                 <div key={friend.id} className="friend-thing">
                                     <p>{friend.name}</p>
@@ -59,7 +54,7 @@ class FriendsList extends React.Component {
                                     <p>{friend.email}</p>
                                 </div>
                             ))}
-                        </div>
+
                     </div>
                 )}
             </div>

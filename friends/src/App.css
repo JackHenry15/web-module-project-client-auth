@@ -1,1 +1,40 @@
 
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.App {
+    text-align: center;
+}
+
+ul {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0 36px;
+    padding: 12px;
+
+}
+
+li {
+    list-style: none;
+    margin-right: 6px;
+    color: blue;
+}
+.friends-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.friends-wrapper {
+    background-color: tan;
+    display: flex;
+    width: fit-content;
+    flex-flow: column nowrap;
+}
+
+.friend-thing{
+    border: 3px solid black;
+    justify-content: center;
+    align-items: center;
+}
